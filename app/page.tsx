@@ -4,8 +4,8 @@ import React from "react";
 import Image from "next/image";
 import { Box, Container, Typography, Stack } from "@mui/material";
 
-
 import Pillars from "@/components/Pillars";
+import ProductShowcase from "@/components/ProductShowcase";
 
 import { COLORS } from "@/utils/enum";
 import logo from "@/logo_white.png";
@@ -61,10 +61,7 @@ export default function Home() {
       <Box className="ambient-glow glow-3" />
       <FloatingParticles />
 
-      {/* ═════════════════════════════════════════
-          SECTION 1 — HERO
-      ═════════════════════════════════════════ */}
-      <Box className="section-fullscreen" sx={{ pt: { xs: 6, md: 0 } }}>
+      <Box className="section-fullscreen">
         <Container
           maxWidth="lg"
           sx={{
@@ -186,71 +183,25 @@ export default function Home() {
               proportions in 3D, we engineer bespoke, weightless titanium frames
               crafted entirely around your measurements.
             </Typography>
-
-
           </Stack>
         </Container>
-
-        {/* Scroll indicator */}
-        <Box
-          className="fade-in-up"
-          sx={{
-            position: "absolute",
-            bottom: { xs: 24, md: 40 },
-            left: "50%",
-            transform: "translateX(-50%)",
-            animationDelay: "1.2s",
-            opacity: 0,
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            gap: 1,
-          }}
-        >
-          <Typography
-            variant="caption"
-            sx={{
-              color: "rgba(255, 236, 212, 0.3)",
-              letterSpacing: "0.2em",
-              fontSize: "0.6rem",
-              textTransform: "uppercase",
-            }}
-          >
-            Scroll to explore
-          </Typography>
-          <Box
-            sx={{
-              width: 20,
-              height: 32,
-              border: "1.5px solid rgba(255, 236, 212, 0.2)",
-              borderRadius: "10px",
-              display: "flex",
-              justifyContent: "center",
-              pt: "6px",
-            }}
-          >
-            <Box
-              sx={{
-                width: 3,
-                height: 8,
-                borderRadius: "3px",
-                backgroundColor: "rgba(255, 236, 212, 0.4)",
-                animation: "float 2s ease-in-out infinite",
-              }}
-            />
-          </Box>
-        </Box>
       </Box>
 
       {/* ═════════════════════════════════════════
-          SECTION 2 — HERO IMAGE SHOWCASE
+          SECTION 3 — PRODUCT SHOWCASE
       ═════════════════════════════════════════ */}
       <Box className="section-block" sx={{ zIndex: 1 }}>
-        <Container maxWidth="md">
-          {/* Shimmer divider */}
-          <Box className="shimmer-line" sx={{ mb: { xs: 6, md: 8 } }} />
+        <Container maxWidth="lg">
+          {/* <Box className="shimmer-line" sx={{ mb: { xs: 6, md: 8 } }} /> */}
 
-          <Stack spacing={4} sx={{ alignItems: "center", textAlign: "center" }}>
+          <Stack
+            spacing={2}
+            sx={{
+              alignItems: "center",
+              textAlign: "center",
+              mb: { xs: 4, md: 6 },
+            }}
+          >
             <Typography
               variant="overline"
               sx={{
@@ -260,7 +211,7 @@ export default function Home() {
                 fontSize: "0.7rem",
               }}
             >
-              CRAFTSMANSHIP MEETS TECHNOLOGY
+              EXQUISITE PROTOTYPES
             </Typography>
 
             <Typography
@@ -270,72 +221,43 @@ export default function Home() {
                 fontSize: { xs: "1.8rem", sm: "2.4rem", md: "3rem" },
                 color: COLORS.SECONDARY,
                 lineHeight: 1.15,
-                maxWidth: 650,
+                maxWidth: 600,
               }}
             >
-              Where Art Meets Engineering
+              The Bespoke Collection
             </Typography>
-
-            {/* Hero glasses image */}
-            <Box className="hero-image-container" sx={{ my: { xs: 2, md: 4 } }}>
-              <Box className="hero-image-glow" />
-              <Box
-                sx={{
-                  position: "relative",
-                  width: "100%",
-                  height: "100%",
-                  borderRadius: "32px",
-                  overflow: "hidden",
-                  border: "1px solid rgba(255, 236, 212, 0.08)",
-                  boxShadow:
-                    "0 24px 80px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 236, 212, 0.04)",
-                }}
-              >
-                <Image
-                  src="/images/hero-glasses.png"
-                  alt="Premium bespoke titanium eyewear by SPEXMAKER"
-                  fill
-                  sizes="(max-width: 768px) 90vw, 520px"
-                  style={{ objectFit: "cover" }}
-                  priority
-                />
-              </Box>
-            </Box>
-
-            {/* Luxury Divider */}
-            <Box className="luxury-divider" sx={{ my: 2 }}>
-              <Box className="diamond" />
-            </Box>
 
             <Typography
               variant="body1"
               sx={{
-                color: "rgba(255, 236, 212, 0.55)",
-                fontSize: { xs: "0.95rem", sm: "1.05rem" },
+                color: "rgba(255, 236, 212, 0.6)",
+                fontSize: { xs: "0.9rem", sm: "1rem" },
                 fontWeight: 300,
-                lineHeight: 1.8,
-                maxWidth: 540,
-                fontStyle: "italic",
+                lineHeight: 1.6,
+                maxWidth: 550,
+                mb: 2,
               }}
             >
-              &ldquo;Each frame is a statement — an intersection of 3,000 data
-              points, aerospace-grade titanium, and Italian acetate heritage,
-              converging into a single, weightless artefact.&rdquo;
+              A showcase of our titanium wireframes, hand-milled acetates, and
+              concept designs. Click any frame to inspect the design.
             </Typography>
           </Stack>
+
+          <ProductShowcase />
         </Container>
       </Box>
 
-      {/* ═════════════════════════════════════════
-          SECTION 3 — PILLARS (FEATURES)
-      ═════════════════════════════════════════ */}
       <Box className="section-block" sx={{ zIndex: 1 }}>
         <Container maxWidth="lg">
           <Box className="shimmer-line" sx={{ mb: { xs: 6, md: 8 } }} />
 
           <Stack
             spacing={2}
-            sx={{ alignItems: "center", textAlign: "center", mb: { xs: 4, md: 6 } }}
+            sx={{
+              alignItems: "center",
+              textAlign: "center",
+              mb: { xs: 4, md: 6 },
+            }}
           >
             <Typography
               variant="overline"
@@ -367,15 +289,11 @@ export default function Home() {
         </Container>
       </Box>
 
-
-
-      {/* ═════════════════════════════════════════
-          FOOTER
-      ═════════════════════════════════════════ */}
       <Box
         component="footer"
         sx={{
-          py: 4,
+          pt: 6,
+          pb: 4,
           borderTop: "1px solid rgba(255, 236, 212, 0.05)",
           backgroundColor: "rgba(20, 14, 9, 0.5)",
           mt: "auto",
@@ -383,6 +301,82 @@ export default function Home() {
         }}
       >
         <Container maxWidth="lg">
+          <Stack
+            direction={{ xs: "column", md: "row" }}
+            spacing={{ xs: 3, md: 4 }}
+            sx={{
+              justifyContent: "space-between",
+              alignItems: { xs: "center", md: "flex-start" },
+              textAlign: { xs: "center", md: "left" },
+              pb: 4,
+              borderBottom: "1px solid rgba(255, 236, 212, 0.05)",
+              mb: 3,
+            }}
+          >
+            {/* Address */}
+            <Box sx={{ maxWidth: { xs: "100%", md: "60%" } }}>
+              <Typography
+                variant="overline"
+                sx={{
+                  color: "rgba(255, 236, 212, 0.4)",
+                  letterSpacing: "0.2em",
+                  fontSize: "0.65rem",
+                  display: "block",
+                  mb: 1.5,
+                }}
+              >
+                STUDIO ADDRESS
+              </Typography>
+              <Typography
+                variant="body2"
+                sx={{
+                  color: "rgba(255, 236, 212, 0.7)",
+                  fontSize: "0.85rem",
+                  fontWeight: 300,
+                  lineHeight: 1.6,
+                }}
+              >
+                Ground Floor, PKS Town Central, Unit No. GA-17-18-19, Greater
+                Noida West, Ghaziabad, Ithaira, Uttar Pradesh 201318
+              </Typography>
+            </Box>
+
+            {/* Phone */}
+            <Box sx={{ textAlign: { xs: "center", md: "right" } }}>
+              <Typography
+                variant="overline"
+                sx={{
+                  color: "rgba(255, 236, 212, 0.4)",
+                  letterSpacing: "0.2em",
+                  fontSize: "0.65rem",
+                  display: "block",
+                  mb: 1.5,
+                }}
+              >
+                CONTACT NUMBER
+              </Typography>
+              <Typography
+                variant="body1"
+                component="a"
+                href="tel:08796309636"
+                sx={{
+                  color: COLORS.SECONDARY,
+                  fontSize: "1rem",
+                  fontWeight: 500,
+                  textDecoration: "none",
+                  transition: "color 0.3s ease",
+                  display: "inline-block",
+                  "&:hover": {
+                    color: "#ffffff",
+                  },
+                }}
+              >
+                087963 09636
+              </Typography>
+            </Box>
+          </Stack>
+
+          {/* Logo, Copyright & Links */}
           <Stack
             direction={{ xs: "column", sm: "row" }}
             sx={{
@@ -419,7 +413,7 @@ export default function Home() {
               reserved.
             </Typography>
 
-            <Stack direction="row" spacing={3}>
+            {/* <Stack direction="row" spacing={3}>
               {["Privacy", "Terms"].map((link) => (
                 <Typography
                   key={link}
@@ -438,7 +432,7 @@ export default function Home() {
                   {link}
                 </Typography>
               ))}
-            </Stack>
+            </Stack> */}
           </Stack>
         </Container>
       </Box>
