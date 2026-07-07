@@ -2,6 +2,8 @@
   --background: #1e150e;
   --foreground: #ffecd4;
   --secondary: #2a2b2d;
+  --accent-gold: #d4a76a;
+  --accent-warm: #c4956a;
 }
 
 html,
@@ -28,7 +30,9 @@ body {
   margin: 0;
 }
 
-/* Glowing Ambient Blob Spheres */
+/* ========================================
+   AMBIENT GLOW SPHERES
+======================================== */
 .ambient-glow {
   position: absolute;
   border-radius: 50%;
@@ -57,7 +61,151 @@ body {
   animation: float-blob-2 30s ease-in-out infinite alternate;
 }
 
-/* Custom Scrollbar for Luxury Aesthetics */
+.glow-3 {
+  background: radial-gradient(circle, #d4a76a 0%, rgba(212, 167, 106, 0) 70%);
+  width: 40vw;
+  height: 40vw;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.06;
+  animation: float-blob-3 20s ease-in-out infinite alternate;
+}
+
+/* ========================================
+   FILM GRAIN TEXTURE OVERLAY
+======================================== */
+.grain-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* ========================================
+   HERO IMAGE CONTAINER
+======================================== */
+.hero-image-container {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  aspect-ratio: 1 / 1;
+  margin: 0 auto;
+}
+
+.hero-image-glow {
+  position: absolute;
+  inset: -20%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(212, 167, 106, 0.15) 0%,
+    rgba(212, 167, 106, 0.05) 40%,
+    transparent 70%
+  );
+  border-radius: 50%;
+  z-index: 0;
+  animation: pulse-glow 6s ease-in-out infinite;
+}
+
+/* ========================================
+   DECORATIVE HORIZONTAL DIVIDERS
+======================================== */
+.luxury-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.luxury-divider::before,
+.luxury-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 236, 212, 0.2),
+    transparent
+  );
+}
+
+.luxury-divider .diamond {
+  width: 6px;
+  height: 6px;
+  background: rgba(255, 236, 212, 0.3);
+  transform: rotate(45deg);
+  flex-shrink: 0;
+}
+
+/* ========================================
+   SHIMMER LINE (horizontal animated light streak)
+======================================== */
+.shimmer-line {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  height: 1px;
+  margin: 0 auto;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 236, 212, 0.06) 50%,
+    transparent 100%
+  );
+  overflow: hidden;
+}
+
+.shimmer-line::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 236, 212, 0.35),
+    transparent
+  );
+  animation: shimmer-sweep 4s ease-in-out infinite;
+}
+
+/* ========================================
+   SECTION STYLES
+======================================== */
+.section-fullscreen {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.section-block {
+  position: relative;
+  padding: 80px 0;
+}
+
+@media (max-width: 600px) {
+  .section-block {
+    padding: 48px 0;
+  }
+}
+
+/* ========================================
+   CUSTOM SCROLLBAR
+======================================== */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -76,13 +224,14 @@ body {
   background: #ffecd4;
 }
 
-/* Custom Selection Color */
 ::selection {
   background-color: #ffecd4;
   color: #1e150e;
 }
 
-/* Custom Micro-Animations */
+/* ========================================
+   KEYFRAME ANIMATIONS
+======================================== */
 @keyframes float {
   0% {
     transform: translateY(0px);
@@ -104,6 +253,18 @@ body {
   }
   100% {
     box-shadow: 0 0 0 0 rgba(255, 236, 212, 0);
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.08);
   }
 }
 
@@ -134,10 +295,22 @@ body {
   }
 }
 
+@keyframes float-blob-3 {
+  0% {
+    transform: translate(-50%, -50%) scale(1) rotate(0deg);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.15) rotate(10deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1) rotate(0deg);
+  }
+}
+
 @keyframes fade-in-up {
   from {
     opacity: 0;
-    transform: translateY(24px);
+    transform: translateY(28px);
   }
   to {
     opacity: 1;
@@ -145,8 +318,61 @@ body {
   }
 }
 
+@keyframes fade-in-scale {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes shimmer-sweep {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 200%;
+  }
+}
+
+@keyframes rotate-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes float-particle {
+  0%,
+  100% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-80px) translateX(20px);
+  }
+}
+
+/* ========================================
+   ANIMATION UTILITY CLASSES
+======================================== */
 .fade-in-up {
   animation: fade-in-up 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.fade-in-scale {
+  animation: fade-in-scale 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .float-animation {
@@ -157,10 +383,42 @@ body {
   animation: pulse-gold 2s infinite;
 }
 
-/* Glassmorphism utility */
+/* ========================================
+   GLASSMORPHISM UTILITY
+======================================== */
 .glass-panel {
   background: rgba(42, 43, 45, 0.45);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid rgba(255, 236, 212, 0.07);
+}
+
+.glass-panel-highlight {
+  background: rgba(42, 43, 45, 0.35);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 236, 212, 0.12);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 236, 212, 0.05);
+}
+
+/* ========================================
+   FLOATING PARTICLES
+======================================== */
+.particle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: rgba(255, 236, 212, 0.3);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: float-particle 8s ease-in-out infinite;
+}
+
+
+/* ========================================
+   SMOOTH SCROLL
+======================================== */
+html {
+  scroll-behavior: smooth;
 }
