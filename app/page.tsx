@@ -409,7 +409,7 @@ export default function Home() {
               variant="caption"
               sx={{ color: "rgba(255, 236, 212, 0.35)", fontSize: "0.75rem" }}
             >
-              &copy; {new Date().getFullYear()} SPEXMAKER Studio. All rights
+              &copy; {new Date().getFullYear()} SPEXMAKER NXTGEN PRIVATE LIMITED. All rights
               reserved.
             </Typography>
 
